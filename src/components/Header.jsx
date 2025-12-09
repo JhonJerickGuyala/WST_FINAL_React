@@ -68,7 +68,7 @@ const Header = ({
             </div>
             <div>
               <h1 className="text-lg md:text-xl font-bold text-stone-800">Purrfect Companion System</h1>
-              <p className="text-[10px] md:text-xs text-stone-500 hidden sm:block">Cat Adoption and Rescue Center</p>
+              <p className="text-[10px] md:text-xs text-stone-500 hidden sm:block">Cat Adoption and Rescue Center.</p>
             </div>
           </div>
 
