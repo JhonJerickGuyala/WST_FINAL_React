@@ -14,11 +14,8 @@ const CatDetailsModal = ({ cat, onClose, onAdopt, isAdopted, maxAdoptionsReached
         onClick={onClose}
       />
       
-      {/* Modal Container */}
-      {/* REMOVED: shadow-2xl (Para wala nang itim na anino sa likod) */}
       <div className="relative bg-white rounded-3xl w-full max-w-4xl h-[85vh] md:h-auto md:max-h-[90vh] flex flex-col md:flex-row overflow-hidden animate-in zoom-in-95 duration-200">
         
-        {/* CLOSE BUTTON */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-50 p-2.5 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full text-stone-500 hover:text-stone-900 shadow-sm border border-stone-100 transition-all transform hover:scale-105"
@@ -26,7 +23,6 @@ const CatDetailsModal = ({ cat, onClose, onAdopt, isAdopted, maxAdoptionsReached
           <X className="w-5 h-5" />
         </button>
 
-        {/* Left: Image Container */}
         <div className="relative w-full md:w-5/12 h-64 md:h-auto bg-stone-100 flex-shrink-0">
           <img 
             src={cat.image} 
@@ -39,14 +35,11 @@ const CatDetailsModal = ({ cat, onClose, onAdopt, isAdopted, maxAdoptionsReached
               <span>Pending</span>
             </div>
           )}
-          {/* Gradient Overlay for Mobile */}
           <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 to-transparent md:hidden" />
         </div>
 
-        {/* Right: Details Container */}
         <div className="flex-1 flex flex-col h-full overflow-hidden bg-white relative">
           
-          {/* Scrollable Content */}
           <div className="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
             <style>{`
               .custom-scrollbar::-webkit-scrollbar { width: 6px; }
@@ -55,7 +48,6 @@ const CatDetailsModal = ({ cat, onClose, onAdopt, isAdopted, maxAdoptionsReached
               .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: #d6d3d1; }
             `}</style>
 
-            {/* Header Info */}
             <div className="mb-8 pr-16">
               <div className="flex flex-wrap items-center gap-3 mb-2">
                 <h2 className="text-3xl md:text-4xl font-black text-stone-800 tracking-tight">{cat.name}</h2>
@@ -66,7 +58,6 @@ const CatDetailsModal = ({ cat, onClose, onAdopt, isAdopted, maxAdoptionsReached
               <p className="text-lg text-stone-500 font-medium">{cat.breed}</p>
             </div>
 
-            {/* Info Grid */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="bg-stone-50 p-4 rounded-2xl border border-stone-100">
                 <div className="flex items-center gap-2 text-stone-400 mb-1">
@@ -101,7 +92,6 @@ const CatDetailsModal = ({ cat, onClose, onAdopt, isAdopted, maxAdoptionsReached
               </div>
             </div>
 
-            {/* Story & Personality */}
             <div className="space-y-8 mb-24">
               <div>
                 <h3 className="text-sm font-black text-stone-800 uppercase tracking-widest mb-3 flex items-center gap-2">
@@ -135,7 +125,6 @@ const CatDetailsModal = ({ cat, onClose, onAdopt, isAdopted, maxAdoptionsReached
             </div>
           </div>
 
-          {/* Sticky Footer Button - REMOVED border-t and shadow lines */}
           <div className="absolute bottom-0 left-0 right-0 p-6 bg-white/95 backdrop-blur-sm">
             <button
               onClick={() => onAdopt(cat.id, cat.name)}

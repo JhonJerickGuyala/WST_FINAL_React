@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Bell, Heart, Clock } from 'lucide-react';
+import { Menu, X, Bell, Clock } from 'lucide-react';
 
 const Header = ({ 
   setShowAboutUs, 
@@ -10,23 +10,35 @@ const Header = ({
   setMobileMenuOpen, 
   notifications,
   unreadNotifications, 
-  markNotificationsAsRead 
+  markNotificationsAsRead,
+  isModalOpen // 👈 New prop received from App.js
 }) => {
   const [scrolled, setScrolled] = useState(false);
+  const [headerPadding, setHeaderPadding] = useState(0);
 
+  // Detect scroll
   useEffect(() => {
-    // Scroll threshold to toggle white background
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close notifications when clicking outside on desktop
+  // Detect Modal Open to Adjust Header Padding
+  useEffect(() => {
+    if (isModalOpen) {
+      // Calculate scrollbar width
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      setHeaderPadding(scrollbarWidth);
+    } else {
+      setHeaderPadding(0);
+    }
+  }, [isModalOpen]);
+
+  // Handle click outside notifications
   useEffect(() => {
     if (!showNotifications) return;
 
     const handleClickOutside = (event) => {
-      // Check if click is outside notification dropdown
       const notificationDropdown = document.querySelector('.notification-dropdown');
       const notificationButton = document.querySelector('.notification-button');
       
@@ -37,7 +49,6 @@ const Header = ({
       }
     };
 
-    // Only add event listener on desktop (md and up)
     if (window.innerWidth >= 768) {
       document.addEventListener('mousedown', handleClickOutside);
     }
@@ -45,21 +56,23 @@ const Header = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showNotifications]);
+  }, [showNotifications, setShowNotifications]);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[90] transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/95 backdrop-blur-xl shadow-md py-0' 
-        : 'bg-transparent py-2' 
-    }`}>
+    <header 
+      // 👇 Dynamic Padding applied here
+      style={{ paddingRight: `${headerPadding}px` }}
+      className={`fixed top-0 left-0 right-0 z-[90] transition-all duration-300 ${
+        scrolled 
+          ? 'bg-white/95 backdrop-blur-xl shadow-md py-0' 
+          : 'bg-transparent py-2' 
+      }`}
+    >
       <nav className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
-          {/* Logo Section */}
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
-              {/* Cat icon from SVG file */}
               <img 
                 src="/images/cat-icon.svg" 
                 alt="Purr-fect Rescue Logo" 
@@ -72,7 +85,6 @@ const Header = ({
             </div>
           </div>
 
-          {/* Right Side Actions */}
           <div className="flex items-center">
             
             {/* Desktop Navigation Links */}
@@ -109,10 +121,9 @@ const Header = ({
                 )}
               </button>
 
-              {/* Notification Dropdown - FIXED POSITION */}
+              {/* Notification Dropdown */}
               {showNotifications && (
                 <>
-                  {/* Mobile overlay - closes on click */}
                   <div 
                     className="fixed inset-0 z-[100] md:hidden" 
                     onClick={() => setShowNotifications(false)}
@@ -189,13 +200,7 @@ const Header = ({
         {/* Mobile Menu Dropdown Links */}
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-stone-100 shadow-xl p-4 flex flex-col gap-2 animate-in slide-in-from-top-5 z-[80]">
-            <a 
-              href="#home" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3 text-stone-700 hover:bg-stone-50/50 hover:text-amber-600 rounded-xl transition-colors font-bold"
-            >
-              Home
-            </a>
+            
             <button 
               onClick={() => { setShowAboutUs(true); setMobileMenuOpen(false); }} 
               className="px-4 py-3 text-stone-700 hover:bg-stone-50/50 hover:text-amber-600 rounded-xl transition-colors text-left font-bold"

@@ -7,7 +7,6 @@ const FilterBar = ({ filters, onFilterChange, colorPatterns }) => {
   return (
     <div className="space-y-4 md:space-y-6">
       
-      {/* Title - Compact on Mobile */}
       <div className="text-center space-y-1">
         <div className="flex items-center justify-center gap-2 text-stone-700">
           <Filter className="w-4 h-4 md:w-5 md:h-5 text-amber-600" />
@@ -20,10 +19,8 @@ const FilterBar = ({ filters, onFilterChange, colorPatterns }) => {
         </p>
       </div>
 
-      {/* Filter Controls - 2 Columns on Mobile, 4 on Desktop */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
         
-        {/* Color Pattern */}
         <div className="space-y-1">
           <label className="block text-xs font-bold text-stone-700 ml-1">
             Color
@@ -40,7 +37,6 @@ const FilterBar = ({ filters, onFilterChange, colorPatterns }) => {
           </select>
         </div>
 
-        {/* Age */}
         <div className="space-y-1">
           <label className="block text-xs font-bold text-stone-700 ml-1">
             Age
@@ -57,7 +53,6 @@ const FilterBar = ({ filters, onFilterChange, colorPatterns }) => {
           </select>
         </div>
 
-        {/* Gender */}
         <div className="space-y-1">
           <label className="block text-xs font-bold text-stone-700 ml-1">
             Gender
@@ -73,7 +68,6 @@ const FilterBar = ({ filters, onFilterChange, colorPatterns }) => {
           </select>
         </div>
 
-        {/* Clear Button - Spans full width on mobile if needed, or fits in grid */}
         <div className="flex items-end col-span-1 md:col-span-1">
           <button
             onClick={() => onFilterChange('clear')}
@@ -90,7 +84,6 @@ const FilterBar = ({ filters, onFilterChange, colorPatterns }) => {
         </div>
       </div>
 
-      {/* Active Filters Display (Tiny Tags) */}
       {hasActiveFilters && (
         <div className="flex flex-wrap gap-2 items-center pt-2 border-t border-stone-200">
           <span className="text-xs text-stone-500 font-semibold">Filters:</span>

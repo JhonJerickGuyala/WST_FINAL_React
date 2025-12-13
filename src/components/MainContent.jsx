@@ -22,11 +22,8 @@ const MainContent = ({
       
       <div className="max-w-7xl mx-auto">
 
-        {/* --- CONTROL SECTION --- */}
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 mb-8 lg:mb-10 items-start">
           
-          {/* 1. FILTER SECTION (ORDER-1: Top on Mobile, Left on Desktop) */}
-          {/* FIX: Changed order-2 to order-1 */}
           <div className="w-full lg:w-3/4 order-1">
             <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-4 md:p-6 border border-stone-100 h-full flex flex-col justify-center">
               <FilterBar 
@@ -37,11 +34,8 @@ const MainContent = ({
             </div>
           </div>
 
-          {/* 2. RIGHT COLUMN (ORDER-2: Bottom on Mobile, Right on Desktop) */}
-          {/* FIX: Changed order-1 to order-2 */}
           <div className="w-full lg:w-1/4 flex flex-col gap-4 order-2">
             
-            {/* A. ADOPTION PROGRESS CARD */}
             <div className="bg-white rounded-3xl shadow-lg p-4 md:p-5 border border-stone-200">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
@@ -86,7 +80,6 @@ const MainContent = ({
               </div>
             </div>
 
-            {/* B. SHOWING COUNT (Nasa ilalim ng Progress) */}
             <div className="bg-white rounded-2xl border border-stone-100 shadow-sm p-3 flex items-center justify-center gap-2">
               <Search className="w-4 h-4 text-amber-500" />
               <p className="text-stone-600 text-xs font-bold">
@@ -97,7 +90,6 @@ const MainContent = ({
           </div>
         </div>
 
-        {/* --- CAT GRID --- */}
         {filteredCats.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
             {filteredCats.map(cat => (
@@ -110,7 +102,7 @@ const MainContent = ({
             ))}
           </div>
         ) : (
-          // Empty State
+          
           <div className="text-center py-20">
             <div className="max-w-md mx-auto">
               <div className="relative inline-block mb-6">

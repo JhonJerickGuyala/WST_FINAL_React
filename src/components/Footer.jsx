@@ -3,8 +3,7 @@ import { MapPin, HelpCircle, Shield, AlertTriangle, Heart } from 'lucide-react';
 const Footer = () => {
   return (
     <footer className="relative bg-gradient-to-b from-white via-stone-50 to-amber-50/50 border-t border-stone-200 mt-20 pt-8 md:pt-16 pb-8 md:pb-10 overflow-hidden">
-      
-      {/* Decorative Elements (Subtle Watermarks) */}
+
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 right-0 text-[10rem] opacity-[0.02] rotate-12 select-none">🐾</div>
         <div className="absolute bottom-0 left-10 text-[8rem] opacity-[0.02] -rotate-12 select-none">🐾</div>
@@ -12,10 +11,8 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Main Footer Content - Compact on Mobile */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 mb-10 md:mb-16">
           
-          {/* Location Section */}
           <div className="space-y-4 md:space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 md:w-10 md:h-10 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600 shadow-sm border border-amber-200">
@@ -26,7 +23,7 @@ const Footer = () => {
             
             <div className="pl-1 md:pl-2 space-y-3 md:space-y-4">
               <div className="text-stone-600 leading-relaxed text-sm md:text-base">
-                <p className="font-bold text-stone-800">Purr-fect Rescue Center</p>
+                <p className="font-bold text-stone-800">Purrfect Rescue Center</p>
                 <p>Union Street, Barangay 5</p>
                 <p>Balayan, Batangas</p>
                 <p>4213, Philippines</p>
@@ -131,8 +128,7 @@ const Footer = () => {
           </div>
           
           <div className="text-center md:text-right flex items-center gap-2 text-xs md:text-sm text-stone-500">
-            <span>Created with</span>
-            <span>by</span>
+            <span>Created with by</span>
             <span className="font-bold text-amber-600">Guyala, Jhon Jerick E - BSIT 3A</span>
           </div>
         </div>

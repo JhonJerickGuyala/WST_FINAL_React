@@ -24,10 +24,8 @@ const ContactPage = ({ setShowContact }) => {
         onClick={() => setShowContact(false)}
       />
       
-      {/* OUTER WRAPPER: Dito ang rounded corners at shadow. FIXED SIZE. */}
       <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-5xl h-[85vh] max-h-[90vh] overflow-hidden flex flex-col animate-in zoom-in-95 duration-200">
         
-        {/* CLOSE BUTTON: Nakalutang sa Outer Wrapper (Permanenteng nasa taas) */}
         <button
           onClick={() => setShowContact(false)}
           className="absolute top-4 right-4 z-50 p-2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full shadow-md border border-stone-100 transition-all group"
@@ -37,12 +35,9 @@ const ContactPage = ({ setShowContact }) => {
 
         <div className="overflow-y-auto h-full">
           
-          {/* CONTENT FLEX WRAPPER */}
           <div className="flex flex-col lg:flex-row min-h-full">
             
-            {/* Left: Info Section */}
             <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 p-8 md:p-10 lg:p-12 lg:w-5/12 border-b lg:border-b-0 lg:border-r border-stone-100 text-stone-800 flex-shrink-0 relative">
-              {/* Padding-top adjustment para di matakpan ng X button sa mobile */}
               <div className="pt-8 lg:pt-0">
                 <h2 className="text-3xl font-black mb-4">Get in Touch</h2>
                 <p className="text-stone-600 mb-10 leading-relaxed font-medium">

@@ -128,7 +128,7 @@ export const catData = [
   },
   {
     id: 11,
-    name: "Tintin",
+    name: "ChinChin",
     colorPattern: "Tortoiseshell",
     age: 5,
     gender: "Female",
@@ -154,7 +154,7 @@ export const catData = [
   },
   {
     id: 13,
-    name: "Snowball",
+    name: "Tintin",
     colorPattern: "White",
     age: 3,
     gender: "Male",
@@ -168,7 +168,7 @@ export const catData = [
   // Black Cats (2)
   {
     id: 14,
-    name: "Blackie",
+    name: "Kakong",
     colorPattern: "Black",
     age: 2,
     gender: "Male",

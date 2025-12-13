@@ -25,17 +25,29 @@ function App() {
   });
   const [ageError, setAgeError] = useState('');
 
-  // Scroll Lock Management
+  // Determine if any modal is currently open
+  const isModalOpen = showAdoptionForm || showAboutUs || showContact || showCatDetails;
+
+  // Scroll Lock Management (Fixes Body Shift)
   useEffect(() => {
-    if (showAdoptionForm || showAboutUs || showContact || showCatDetails) {
+    if (isModalOpen) {
+      // Calculate scrollbar width
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      
+      // Add padding to body to prevent content shift
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
       document.body.style.overflow = 'hidden';
     } else {
+      // Reset styles
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     }
+
     return () => {
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     };
-  }, [showAdoptionForm, showAboutUs, showContact, showCatDetails]);
+  }, [isModalOpen]);
 
   // Derived State: Color Patterns
   const colorPatterns = useMemo(() => {
@@ -80,9 +92,7 @@ function App() {
       alert(`You already have a pending adoption request for ${catName}.`);
       return;
     }
-    // Close Details Modal first to prevent overlap
     setShowCatDetails(false); 
-    // Open Form
     setShowAdoptionForm(true);
   };
 
@@ -153,12 +163,14 @@ function App() {
         notifications={notifications}
         unreadNotifications={unreadNotifications}
         markNotificationsAsRead={markNotificationsAsRead}
+        // 👇 PASS THIS PROP to fix Header shift
+        isModalOpen={isModalOpen} 
       />
 
-      {/* Hero Section (Cleaned up, no filters/progress) */}
+      {/* Hero Section */}
       <HeroSection />
 
-      {/* Main Content (Includes Filters, Progress Bar & Cat Grid) */}
+      {/* Main Content */}
       <MainContent 
         filteredCats={filteredCats}
         catData={catData}

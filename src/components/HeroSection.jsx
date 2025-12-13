@@ -25,7 +25,6 @@ const HeroSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Hero Header - Centered vertically due to min-h-screen flex */}
         <div className="text-center space-y-6">
           <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-full border-2 border-amber-100 shadow-sm mb-4">
             <span className="relative flex h-3 w-3">
